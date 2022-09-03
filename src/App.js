@@ -2,9 +2,9 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
 
-import { TextContextProvider } from "./context/textContext";
+// import { TextContextProvider } from "./context/textContext";
 import { ImgContextProvider } from "./context/imgContext";
-import { HolidayContextProvider } from "./context/holidaysContext";
+// import { HolidayContextProvider } from "./context/holidaysContext";
 
 const wrapper = {
   display: "flex",
@@ -15,15 +15,15 @@ const wrapper = {
 const App = () => {
   return (
     <div style={wrapper}>
-      <HolidayContextProvider>
-        <ImgContextProvider>
-          <TextContextProvider>
-            <Header />
-            <Card />
-            <Footer />
-          </TextContextProvider>
-        </ImgContextProvider>
-      </HolidayContextProvider>
+      {/*<HolidayContextProvider>*/}
+      <ImgContextProvider>
+        {/*<TextContextProvider>*/}
+        <Header />
+        <Card />
+        <Footer />
+        {/*</TextContextProvider>*/}
+      </ImgContextProvider>
+      {/*</HolidayContextProvider>*/}
     </div>
   );
 };
