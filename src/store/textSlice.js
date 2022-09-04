@@ -8,6 +8,12 @@ export const fetchText = createAsyncThunk("text/fetchText", async (holiday) => {
   return data;
 });
 
+export const fetchTextId = createAsyncThunk("text/fetchTextId", async (id) => {
+  const res = await fetch(`${URI_API}text/${id}`);
+  const data = await res.json();
+  return data;
+});
+
 const textSlice = createSlice({
   name: "text",
 
@@ -30,6 +36,24 @@ const textSlice = createSlice({
       state.idText = action.payload.idText;
     },
     [fetchText.rejected]: (state) => {
+      state.isLoading = "failed";
+
+      state.text = "";
+      state.idText = "";
+    },
+    [fetchTextId.pending]: (state) => {
+      state.isLoading = "loading";
+
+      state.text = "";
+      state.idText = "";
+    },
+    [fetchTextId.fulfilled]: (state, action) => {
+      state.isLoading = "success";
+
+      state.text = action.payload.text;
+      state.idText = action.payload.idText;
+    },
+    [fetchTextId.rejected]: (state) => {
       state.isLoading = "failed";
 
       state.text = "";
