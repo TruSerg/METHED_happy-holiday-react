@@ -36,7 +36,7 @@ const Choices = () => {
     <div className={style.wrapper}>
       <button className={style.button} onClick={toggleChoices}>
         {isLoading !== "success" ? (
-          <CircularProgress color="success" />
+          <CircularProgress color="success" size="30px" />
         ) : (
           holidays[holiday] || "Выбрать праздник"
         )}
