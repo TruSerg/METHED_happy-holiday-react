@@ -4,16 +4,7 @@ import { useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
-const wrapper = {
-  display: "flex",
-  flexDirection: "column",
-  height: "100vh",
-};
-
-const btn = {
-  display: "block",
-  margin: "20px auto",
-};
+import style from "./Layout.module.css";
 
 const Layout = () => {
   const {
@@ -22,14 +13,16 @@ const Layout = () => {
   } = useSelector((state) => state);
 
   return (
-    <div style={wrapper}>
+    <div className={style.wrapper}>
       <Header />
       <Outlet />
-      {idText && idImg && (
-        <Link style={btn} to={`singleCard/${idText}/${idImg}`}>
-          Поделиться открыткой
-        </Link>
-      )}
+      <div className={style.link}>
+        {idText && idImg && (
+          <Link className={style.btn} to={`singleCard/${idText}/${idImg}`}>
+            Поделиться открыткой
+          </Link>
+        )}
+      </div>
       <Footer />
     </div>
   );

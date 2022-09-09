@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 import { fetchHolidays } from "../../../store/holidaysSlice";
 import { fetchText } from "../../../store/textSlice";
@@ -34,9 +35,11 @@ const Choices = () => {
   return (
     <div className={style.wrapper}>
       <button className={style.button} onClick={toggleChoices}>
-        {isLoading !== "success"
-          ? "Загрузка..."
-          : holidays[holiday] || "Выбрать праздник"}
+        {isLoading !== "success" ? (
+          <CircularProgress color="success" />
+        ) : (
+          holidays[holiday] || "Выбрать праздник"
+        )}
       </button>
       {isOpenChoices && (
         <ul className={style.list}>

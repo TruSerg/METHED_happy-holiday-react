@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { CircularProgress } from "@mui/material";
 
 import style from "./Felicitation.module.css";
 
@@ -10,11 +11,13 @@ const Felicitation = () => {
     <p className={style.felicitation}>
       {
         /*{text ?? "Выберите повод для поздравления!"}*/
-        isLoading === "loading"
-          ? "Загрузка..."
-          : text === ""
-          ? "Выберите повод для поздравления!"
-          : text
+        isLoading === "loading" ? (
+          <CircularProgress color="success" />
+        ) : text === "" ? (
+          "Выберите повод для поздравления!"
+        ) : (
+          text
+        )
       }
     </p>
   );
